@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri May 23 08:11:46 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Use %make_build instead of %jobs to improve reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Tue May 13 12:19:32 UTC 2025 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Fix build failure with gcc-15:
