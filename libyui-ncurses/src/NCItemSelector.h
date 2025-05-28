@@ -251,6 +251,11 @@ protected:
     virtual wsze preferredSize();
 
     /**
+     * Do not hide an inherited virtual override (bsc#1243732)
+     **/
+    using YWidget::preferredSize;
+
+    /**
      * Return the tag cell (the cell with the "[x]" or "(x)" selector) for the
      * item with the specified index.
      **/
