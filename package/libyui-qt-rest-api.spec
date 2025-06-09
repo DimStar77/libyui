@@ -44,6 +44,10 @@ License:        LGPL-2.1-only OR LGPL-3.0-only
 URL:            http://github.com/libyui/
 Source:         libyui-%{version}.tar.bz2
 
+%if 0%{?suse_version} == 1600 && ! 0%{?is_openSUSE}
+ExclusiveArch: donotbuild
+%endif
+
 %description
 This package provides a libyui REST API plugin for the Qt frontend.
 
