@@ -188,7 +188,12 @@ QY2Graph::makeBezier(const bezier& bezier) const
 {
     QPainterPath path;
     path.moveTo(gToQ(bezier.list[0]));
-    for (int i = 1; i < bezier.size - 1; i += 3)
+#if NEW_GRAPHVIZ_API
+    size_t i;
+#else
+    int i;
+#endif
+    for (i = 1; i < bezier.size - 1; i += 3)
 	path.cubicTo(gToQ(bezier.list[i]), gToQ(bezier.list[i+1]), gToQ(bezier.list[i+2]));
     return path;
 }
@@ -273,7 +278,11 @@ QY2Graph::makeShapeHelper(node_t* node) const
 
     if (poly->peripheries != 1)
     {
+#if NEW_GRAPHVIZ_API
+	qWarning("unsupported number of peripheries %zu", poly->peripheries);
+#else
 	qWarning("unsupported number of peripheries %d", poly->peripheries);
+#endif
     }
 
     const int sides = poly->sides;
@@ -406,7 +415,12 @@ QY2Graph::renderGraph(graph_t* graph)
 	    if (spl == NULL)
 		continue;
 
-	    for (int i = 0; i < spl->size; ++i)
+#if NEW_GRAPHVIZ_API
+            size_t i;
+#else
+            int i;
+#endif
+	    for (i = 0; i < spl->size; ++i)
 	    {
 		const bezier& bz = spl->list[i];
 
