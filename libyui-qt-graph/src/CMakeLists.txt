@@ -12,6 +12,7 @@ set( CMAKE_AUTOMOC on ) # Automatically handle "moc" preprocessor (Q_OBJECTs)
 # this sets LIBGVC_LIBRARIES (and more).
 pkg_check_modules( LIBGVC REQUIRED libgvc )
 message( "--   Graphviz libs: ${LIBGVC_LIBRARIES}" )
+message( "--   Graphviz version: ${LIBGVC_VERSION}" )
 
 
 #
@@ -81,6 +82,12 @@ target_include_directories( ${TARGETLIB} BEFORE PUBLIC ${LOCAL_INCLUDE_DIR}/yui 
 
 # Make the version from ../../VERSION.cmake available as a #define
 target_compile_definitions( ${TARGETLIB} PUBLIC VERSION="${VERSION}" )
+
+if(LIBGVC_VERSION VERSION_GREATER_EQUAL "10.0.0")
+  target_compile_definitions( ${TARGETLIB} PRIVATE NEW_GRAPHVIZ_API=1 )
+else()
+  target_compile_definitions( ${TARGETLIB} PRIVATE NEW_GRAPHVIZ_API=0 )
+endif()
 
 # Add more compile options to this target in addition to those
 # added in the toplevel CMakeLists.txt.
