@@ -2,14 +2,11 @@
 # CMakeLists.txt for libyui-bindings
 #
 
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.10)
 project( libyui-bindings )
 
 if(COMMAND cmake_policy)
   cmake_policy(SET CMP0017 NEW)
-  if(POLICY CMP0046)
-    cmake_policy(SET CMP0046 OLD)
-  endif()
 endif(COMMAND cmake_policy)
 
 OPTION( BUILD_RUBY_GEM "Build Ruby GEM" YES )
