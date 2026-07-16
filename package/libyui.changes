@@ -1,8 +1,8 @@
 -------------------------------------------------------------------
 Thu Jul 16 08:45:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Fix build against GCC 16 (boo#1243674#c5):
-  + ncruses: Fix wchar_t stream insertion
+- Fix build against GCC 16 (boo#1243674#c5, boo#1256972):
+  + ncurses: Fix wchar_t stream insertion
   + Qt: Fix deprecated enum conversion in YQWizard
   + ncurses-pkg: remove unused-but-set variable 'idx'
   + ncurses-pkg: Replace deprecated SolvAttr provides and requires
